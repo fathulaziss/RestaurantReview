@@ -48,7 +48,6 @@ class MainViewModel : ViewModel() {
                 if (response.isSuccessful) {
                     _restaurant.value = response.body()?.restaurant
                     _listReview.value = response.body()?.restaurant?.customerReviews
-                    _snackbarText.value = Event(response.body()?.message.toString())
                 } else {
                     Log.e(TAG, "onFailure: ${response.message()}")
                 }
@@ -72,6 +71,7 @@ class MainViewModel : ViewModel() {
                 _isLoading.value = false
                 if (response.isSuccessful) {
                     _listReview.value = response.body()?.customerReviews
+                    _snackbarText.value = Event(response.body()?.message.toString())
                 } else {
                     Log.e(TAG,"onFailure: ${response.message()}")
                 }
